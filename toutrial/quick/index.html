@@ -6,6 +6,7 @@
     <script src="../../lib/umd/my-single-spa.js"></script>
     <script>
         // 加载app
+        // 一种函数科里化作用，将异步包装成Promise的方式返回
         function loadAppPromise(app) {
             return () => new Promise((resolve, reject) => {
                 setTimeout(function () {
@@ -57,8 +58,14 @@
             };
 
             // 注册app1和app2
-            mySingleSpa.registerApplication('app1', loadAppPromise(APP1), location => location.hash === '#/app1');
-            mySingleSpa.registerApplication('app2', loadAppPromise(APP2), location => location.hash === '#/app2');
+            mySingleSpa.registerApplication(
+                'app1', 
+                loadAppPromise(APP1), 
+                location => location.hash === '#/app1');
+            mySingleSpa.registerApplication(
+                'app2', 
+                loadAppPromise(APP2), 
+                location => location.hash === '#/app2');
 
             // 启动
             mySingleSpa.start();
