@@ -81,6 +81,7 @@ export function getMountedApps() {
 }
 
 /**
+ * 所谓注册的本质是建立app和路由的关联
  * 注册application
  * @param {string} appName application名称
  * @param {Object|Function<Promise>} applicationOrLoadFunction app配置或app异步加载函数
@@ -89,9 +90,11 @@ export function getMountedApps() {
  * @return {Promise}
  */
 export function registerApplication(appName, applicationOrLoadFunction, activityWhen, customProps = {}) {
+    // 非字符串
     if (!appName || typeof appName !== 'string') {
         throw new Error('the app name must be a non-empty string');
     }
+    // 去重复
     if (getAppNames().indexOf(appName) !== -1) {
         throw new Error('There is already an app declared with name ' + appName);
     }
@@ -107,10 +110,12 @@ export function registerApplication(appName, applicationOrLoadFunction, activity
         throw new Error('the activityWhen must be a function');
     }
 
+    // 如果不是Promise对象，则使用Promise.resolve自动转化成Promise对象
     if (typeof applicationOrLoadFunction !== 'function') {
         applicationOrLoadFunction = () => Promise.resolve(applicationOrLoadFunction);
     }
 
+    // 注册至数组中
     APPS.push({
         name: appName,
         loadApp: applicationOrLoadFunction,

@@ -6,6 +6,9 @@
     <script src="../../lib/umd/my-single-spa.js"></script>
     <script>
         // 加载app
+        // 类似装饰器功能，将给定参数包装成Promise模式
+        // 把定时器写成一个带Promise的写法，可以的情况下，所有setTimeout/异步都
+        // 可以使用异步包装起来
         function loadAppPromise(app) {
             return () => new Promise((resolve, reject) => {
                 setTimeout(function () {
@@ -57,10 +60,11 @@
             };
 
             // 注册app1和app2
+            // 建立路由和app的关系
             mySingleSpa.registerApplication(
                 'app1', 
-                loadAppPromise(APP1), 
-                location => location.hash === '#/app1'
+                loadAppPromise(APP1),     // Promise包装函数
+                location => location.hash === '#/app1' // 执行条件函数
             );
             mySingleSpa.registerApplication(
                 'app2', 
