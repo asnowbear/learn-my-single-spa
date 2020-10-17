@@ -30,7 +30,12 @@ const APPS = [];
  * @return {*[]}
  */
 export function getAppsToLoad() {
-    return APPS.filter(notSkipped).filter(withoutLoadError).filter(isntLoaded).filter(shouldBeActive);
+    // 连环filter带来的作用是什么？
+    // 一层一层的过滤
+    return APPS.filter(notSkipped)
+        .filter(withoutLoadError)
+        .filter(isntLoaded)
+        .filter(shouldBeActive);
 }
 
 /**

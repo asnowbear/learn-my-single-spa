@@ -5,7 +5,11 @@
 
 'use strict';
 
-import {getAppsToLoad, getAppsToMount, getAppsToUnmount, getMountedApps} from '../applications/apps';
+import {
+    getAppsToLoad, 
+    getAppsToMount, 
+    getAppsToUnmount, 
+    getMountedApps} from '../applications/apps';
 import {toLoadPromise} from '../lifecycles/load';
 import {toBootstrapPromise} from '../lifecycles/bootstrap';
 import {toMountPromise} from '../lifecycles/mount';

@@ -27,6 +27,9 @@ export const LOAD_ERROR = 'LOAD_ERROR';
 // 更新service中
 export const UPDATING = 'UPDATING';
 
+// ---------------------------------------
+// 封装成细小的条件判断颗粒，可以很好的去掉if
+// ---------------------------------------
 
 export function notSkipped(app) {
     return app.status !== SKIP_BECAUSE_BROKEN;
