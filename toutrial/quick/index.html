@@ -57,8 +57,16 @@
             };
 
             // 注册app1和app2
-            mySingleSpa.registerApplication('app1', loadAppPromise(APP1), location => location.hash === '#/app1');
-            mySingleSpa.registerApplication('app2', loadAppPromise(APP2), location => location.hash === '#/app2');
+            mySingleSpa.registerApplication(
+                'app1', 
+                loadAppPromise(APP1), 
+                location => location.hash === '#/app1'
+            );
+            mySingleSpa.registerApplication(
+                'app2', 
+                loadAppPromise(APP2), 
+                location => location.hash === '#/app2'
+            );
 
             // 启动
             mySingleSpa.start();
