@@ -18,6 +18,7 @@ export function getProps(app) {
     };
 }
 
+// 判断当前对象是否为Promise对象的方法
 export function smellLikeAPromise(promise) {
     if (promise instanceof Promise) {
         return true;

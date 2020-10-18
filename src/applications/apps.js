@@ -118,7 +118,7 @@ export function registerApplication(appName, applicationOrLoadFunction, activity
 
     APPS.push({
         name: appName,
-        loadApp: applicationOrLoadFunction,
+        loadApp: applicationOrLoadFunction, // 加载应用，外部定义，内部调用
         activityWhen,
         customProps,
         status: NOT_LOADED,

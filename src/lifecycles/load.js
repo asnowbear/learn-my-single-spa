@@ -13,7 +13,11 @@ import {
     NOT_BOOTSTRAPPED
 } from '../applications/app.helper';
 
-import {getProps, smellLikeAPromise, validateLifeCyclesFn, flattenFnArray} from './helper';
+import {
+    getProps, 
+    smellLikeAPromise, 
+    validateLifeCyclesFn, 
+    flattenFnArray} from './helper';
 
 import {ensureAppTimeouts} from '../applications/timeouts';
 
